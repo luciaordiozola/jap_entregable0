@@ -23,7 +23,22 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
+     
+      <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="bienvenido2">
+          
+        </button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="cart.html">Mi carrito</a>
+          <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" onclick="logout()">Cerrar Sesion</a>
+        </a>
+        </div>
+      </div>
+      
+              
+            </div>
     </div>
   </nav>
   <main role="main">
@@ -56,8 +71,23 @@
 
         <dt>Imágenes ilustrativas</dt>
         <dd>
+
+
+          <div class= "container">
+
+            <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+
+              <div class="carousel-inner" id="productImagesGallery">
+                
+              </div>
+            </div>
+            
+          </div>
+          
+          <!--
           <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
           </div>
+          -->
         </dd>
       </dl>
     
