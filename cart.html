@@ -11,8 +11,9 @@
 
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
-
-  <style>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+ 
+ <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -26,11 +27,22 @@
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
       }
+     h1{
+       color: cornflowerblue;
+       text-align: center;
+       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     }
+     h2{
+      color: cornflowerblue;
+       text-align: center;
+       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+     }
     }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/dropzone.css" rel="stylesheet">
+  <link href="css/cart.css" rel="stylesheet">
 </head>
 
 <body>
@@ -43,14 +55,54 @@
       <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 17/10/2021) y Entrega 7 (Fecha de entrega: 14/11/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+  <div class="text-center p-4">
+
+  <h1>Tu carrito
+    <img src=C:\Users\Lucia\Pictures\34611.png width="70" height="70"></h1>
+  <h2>Articulos a comprar <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+  </svg></h2>
+  <div class="container p-5" id="primerProducto"></div>
+  <div class="row justify-content-center">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="row">
+                
+                  <p>Tipo de envio</p>
+                  <form action="../../form-result.php" = method="post" target="_blank">
+                  
+                    <div><button class="btn-block btn-blue"> <span><span id="checkout">Premium: Entre 2 a 5 días (15%)</span></span></div>
+                    <div><button class="btn-block btn-blue"> <span><span id="checkout">Express:Entre 5 a 8 días (10%)</span></span></div>
+                    <div><button class="btn-block btn-blue"> <span><span id="checkout">Estándar:Entre 12 a 15 días (5%)</span></span></div>
+                           
+                </form>
+                
+                <div class="col-lg-5">
+                    <div class="row px-2">
+                        <div class="form-group col-md-6"> <label class="form-control-label">Nombre</label> <input type="text" id="cname" name="cname" placeholder=" "></div>
+                        <div class="form-group col-md-6"> <label class="form-control-label">Apellido</label> <input type="text" id="cnum" name="cnum" placeholder=" "></div>
+                    </div>
+                    <div class="row px-2">
+                        <div class="form-group col-md-6"> <label class="form-control-label">Direccion</label> <input type="text" id="exp" name="exp" placeholder=" "> </div>
+                        <div class="form-group col-md-6"> <label class="form-control-label">Mas detalles</label> <input type="text" id="cvv" name="cvv" placeholder=" "> </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 mt-2">
+                    <div class="row d-flex justify-content-between px-4">
+                        <p class="mb-1 text-left">Costo de envio</p>
+                        <h6 class="mb-1 text-right">$</h6>
+                    </div>
+                    <div class="row d-flex justify-content-between px-4" id="tax">
+                        <p class="mb-1 text-left">Total (IVA incluido)</p>
+                        <h6 class="mb-1 text-right"><span id="total"></span></h6>
+                    </div> <button class="btn-block btn-blue"> <span> <span id="checkout">Finalizar Compra</span><span id="total"></span></span></button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+</div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
