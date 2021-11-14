@@ -4,7 +4,7 @@
 document.addEventListener("DOMContentLoaded", function(e){
 
 });
-
+let envio = 1.15;
 let htmlContentToAppend = "";
 const CARRITO_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
 function mostrarProducto (array){
@@ -70,6 +70,7 @@ getJSONData(CARRITO_INFO_URL).then(function(resultObj){
     productoArray=resultObj.data;
     let datos = productoArray.articles;
     mostrarProducto(datos);
+    costoEnvio();
 });
 
 });
@@ -88,6 +89,27 @@ function sumar(){
       
     }
     
+    
+    document.getElementById("total").innerHTML=(subTotal*envio).toFixed(2); 
+    document.getElementById("envio").innerHTML=((subTotal*envio)-subTotal).toFixed(2); 
 
-    document.getElementById("total").innerHTML=(subTotal).toFixed(2); 
 }
+
+
+    document.getElementById("premium").addEventListener("change", () => {
+       envio= 1.15;
+        sumar();
+        
+    });
+        document.getElementById("express").addEventListener("change", () => {
+            envio= 1.07;
+            sumar ();
+        
+            });    
+        document.getElementById("estandar").addEventListener("change", () => {
+           envio=1.05;
+            sumar ();
+           
+    });
+
+  

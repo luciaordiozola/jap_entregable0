@@ -12,7 +12,8 @@
   <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/album/">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
- 
+ <!-- Link a Bootstrap -->
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
  <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -37,6 +38,11 @@
        text-align: center;
        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
      }
+     
+            .is-invalid{
+              background-color: pink;
+            }
+        
     }
   </style>
   <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -69,33 +75,173 @@
             <div class="row">
                 
                   <p>Tipo de envio</p>
-                  <form action="../../form-result.php" = method="post" target="_blank">
-                  
-                    <div><button class="btn-block btn-blue"> <span><span id="checkout">Premium: Entre 2 a 5 días (15%)</span></span></div>
-                    <div><button class="btn-block btn-blue"> <span><span id="checkout">Express:Entre 5 a 8 días (10%)</span></span></div>
-                    <div><button class="btn-block btn-blue"> <span><span id="checkout">Estándar:Entre 12 a 15 días (5%)</span></span></div>
-                           
-                </form>
+                  <form class="was-validated">
+                  <div class="form-check">
+                    <input checked type="checkbox" name="envioRadio" class="form-check-input" id="premium"  value="Premium" onclick="costoEnvio ()" id="validationFormCheck1" name="radio-stacked" required><br>
+                    <label class="form-check-label" for="validationFormCheck1">Premium:2 a 5 días (15%)</label>
+          <div class="invalid-feedback">Seleccionar tipo de envio</div>
+          <div class="valid-feedback">Elegiste envio Premium</div>
+        </div>
+        <div class="form-check">
+          <input checked type="checkbox" name="envioRadio" class="form-check-input" id="premium"  value="Premium" onclick="costoEnvio ()" id="validationFormCheck1" name="radio-stacked" required><br>
+          <label class="form-check-label" for="validationFormCheck1">Express:5 a 8 días (7%)</label>
+<div class="invalid-feedback">Seleccionar tipo de envio</div>
+<div class="valid-feedback">Elegiste envio Express</div>
+</div>
+<div class="form-check">
+  <input checked type="checkbox" name="envioRadio" class="form-check-input" id="premium"  value="Premium" onclick="costoEnvio ()" id="validationFormCheck1" name="radio-stacked" required><br>
+  <label class="form-check-label" for="validationFormCheck1">Estandar:12 a 15 días (5%)</label>
+<div class="invalid-feedback">Seleccionar tipo de envio</div>
+<div class="valid-feedback">Elegiste envio Estandar</div>
+</div>
+
+</form>      
+                   
+                    
+                         
+                
                 
                 <div class="col-lg-5">
                     <div class="row px-2">
-                        <div class="form-group col-md-6"> <label class="form-control-label">Nombre</label> <input type="text" id="cname" name="cname" placeholder=" "></div>
-                        <div class="form-group col-md-6"> <label class="form-control-label">Apellido</label> <input type="text" id="cnum" name="cnum" placeholder=" "></div>
-                    </div>
-                    <div class="row px-2">
-                        <div class="form-group col-md-6"> <label class="form-control-label">Direccion</label> <input type="text" id="exp" name="exp" placeholder=" "> </div>
-                        <div class="form-group col-md-6"> <label class="form-control-label">Mas detalles</label> <input type="text" id="cvv" name="cvv" placeholder=" "> </div>
+                      <form class="was-validated">
+                        <div class="mb-3"><label for="validationTextarea" class="form-label">Nombre</label><input type="text"  class="form-control is-invalid" id="validationTextarea" id="cname" name="cname" placeholder=" Nombre" required>
+                        <div class="invalid-feedback">
+                          Por favor ingresa Nombre.
+                        </div>
+                      </div>
+                      <div class="mb-3"><label for="validationTextarea" class="form-label">Apellido</label><input type="text"  class="form-control is-invalid" id="validationTextarea" id="cname" name="cname" placeholder=" Apellido" required>
+                        <div class="invalid-feedback">
+                          Por favor ingresa Apellido.
+                        </div>
+                      </div>
+                        
+                      <div class="mb-3"><label for="validationTextarea" class="form-label">Direccion</label><input type="text"  class="form-control is-invalid" id="validationTextarea" id="cname" name="cname" placeholder="Direccion" required>
+                        <div class="invalid-feedback">
+                          Por favor ingresa Direccion.
+                        </div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="validationTextarea" class="form-label">Mas detalles</label>
+                        <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Mas detalles" required></textarea>
+                        <div class="invalid-feedback">
+                          Por favor ingresa mas detalles
+                        </div>
+                      </div>
+                      </form>
+                        
                     </div>
                 </div>
                 <div class="col-lg-4 mt-2">
                     <div class="row d-flex justify-content-between px-4">
                         <p class="mb-1 text-left">Costo de envio</p>
-                        <h6 class="mb-1 text-right">$</h6>
+                        <h6 class="mb-1 text-right">$<span id="envio"></span></h6>
                     </div>
                     <div class="row d-flex justify-content-between px-4" id="tax">
-                        <p class="mb-1 text-left">Total (IVA incluido)</p>
+                        <p class="mb-1 text-left">Total</p>
                         <h6 class="mb-1 text-right"><span id="total"></span></h6>
-                    </div> <button class="btn-block btn-blue"> <span> <span id="checkout">Finalizar Compra</span><span id="total"></span></span></button>
+                      <button class="btn-block btn-blue" data-toggle="modal" data-target="#modalCreditCardForm"> Metodo de pago</button>
+                      <div class="container">
+  
+                        <!-- Central Modal Form-->
+                        <div class="modal fade" id="modalCreditCardForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                        aria-hidden="true">
+                          <div class="modal-dialog modal-lg" role="document">
+                            <!--Content-->
+                            <div class="modal-content">
+                              <!--Header-->
+                              <div class="modal-header">
+                                <h4 class="my-1"><strong>Elegir metodo de pago</strong></h4>
+                      
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                      
+                              <!--Body-->
+                             <form class="was-validated">  
+                              <input type="radio"  name="pago"  id="tarjeta" value="Tarjeta de Credito">
+                              <label for="tarjeta">Tarjeta de credito</label>
+                                <form action="">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <!-- Default input -->
+                                      <label for="exampleForm3" class="mb-1 mt-3">Numero de tarjeta</label>
+                                      <input type="text" id="exampleForm3" class="form-control" value="" id="numTarjeta" class="form-control is-invalid" id="validationTextarea" id="cname" name="cname" placeholder="Numero de tarjeta" required>
+                                      <div class="invalid-feedback">Por favor ingresa Numero de tarjeta
+                                    </div>
+                                    <div class="col-md-6">
+                                      <label for="exampleForm2" class="mb-1 mt-3" id="fechaVencimiento" >
+                                        Vencimiento (MM/YYYY)</label>
+                                      <div class="d-flex justify-content-between" >
+                                        <input type="number"class="form-control is-invalid" id="validationTextarea" id="cname" name="cname" placeholder="vencimiento" required>
+                                       
+                                      <div class="forwardslash"><input type="number" class="form-control is-invalid" id="validationTextarea" id="cname" name="cname" placeholder="vencimiento" required>
+                                        
+                                      </div>
+                                      
+                                    </div>
+                                    
+                                  </div>
+                                  <div class="invalid-feedback">
+                                    Por favor ingrese fecha de vencimiento.
+                                  </div>
+                      
+                                  <div class="row mb-3">
+                                    <div class="col-md-6">
+                                      <!-- Default input -->
+                                      <label for="exampleForm2" class="mb-1 mt-3">Nombre en la tarjeta</label>
+                                      <input type="text" id="exampleForm2" class="form-control" class="form-control is-invalid" id="validationTextarea" id="cname" name="cname" placeholder="Nombre" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <label for="basic-addon3" class="mb-1 mt-3">CVC</label>
+                                      <div class="input-group mb-3">
+                                        <input type="text" class="form-control" class="form-control is-invalid" id="validationTextarea" id="cname" name="cname" placeholder="CVC" required>
+                                        <div class="input-group-append">
+                                          <span class="input-group-text" id="basic-addon2"><i class="fas fa-credit-card mx-05"></i></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <input type="radio" name="pago"id="transferencia"  value="Transferencia Bancaria">
+                                  <label for="tarjeta">Transferencia Bancaria</label>
+                      
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <p class="font-weight-bold float-right my-2">Numero de cuenta: </p>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                          <span class="input-group-text"></span>
+                                        </div>
+                                        <input type="text" class="form-control is-invalid" id="validationTextarea" id="cname" name="cname" placeholder="Numero de cuenta"required >
+                                        <div class="input-group-append">
+                                          <span class="input-group-text"></span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                      
+                                </form>
+                             </form>
+                              </div>
+                      
+                              <!--Footer-->
+                              <div class="modal-footer float-right">
+                                <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                                <button type="button" class="btn btn-primary">Siguiente</button>
+                              </div>
+                            </div>
+                            <!--/.Content-->
+                          </div>
+                        </div>
+                        <!-- Central Modal Form-->
+          
+                      
+                      </div>
+                      <button class="btn-block btn-blue"> <span> <span id="checkout">Finalizar Compra</span><span id="total"></span></span></button>
+                    </div> 
                 </div>
             </div>
         </div>
